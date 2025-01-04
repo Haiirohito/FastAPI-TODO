@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="/static/index.css">
+    <link rel="stylesheet" href="/static/navbar.css">
+</head>
+
+<body>
+    <div class="navbar-top">
+        {% if logged_in %}
+
+        <span>Welcome, {{ user.username }}</span>
+        <a href="/logout">Logout</a>
+
+        {% else %}
+
+        <a href="/login">Login</a>
+        <a href="/sign_up">Sign Up</a>
+
+        {% endif %}
+
+        <a href="profile/{{ user.id }}">Profile</a>
+
+        <div class="search">
+            <input type="text" id="search" placeholder="Search tasks...">
+            <button onclick="filterTasks()">Search</button>
+        </div>
+    </div>
+
+    <div class="middle">
+        <h1>Todo List</h1>
+        <button onclick="location.href='new_task'">Create New Task</button>
+    </div>
+
+    <div class="container">
+        <div class="segment pending">
+            <h2>Pending</h2>
+            <ul id="pending-tasks">
+                {% for task in pending_tasks %}
+                <li>
+                    <strong>{{ task.title }}</strong> - Pending, Due: {{ task.dueDate }}
+                    <p>Description: {{ task.description }}</p>
+
+                    <div class="button-group">
+                        <form action="/complete_task/{{ task.id }}" method="POST" style="display: inline;">
+                            <button type="submit" class="complete-btn">Complete</button>
+                        </form>
+                        <form action="/delete_task/{{ task.id }}" method="POST" style="display: inline;">
+                            <button type="submit" class="delete-btn">Delete</button>
+                        </form>
+                    </div>
+
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="segment completed">
+            <h2>Completed</h2>
+            <ul id="completed-tasks">
+                {% for task in completed_tasks %}
+                <li>
+                    <strong>{{ task.title }}</strong> - Completed
+                    <p>Description: {{ task.description }}</p>
+
+                    <div class="button-group">
+                        <form action="/delete_task/{{ task.id }}" method="POST" style="display: inline;">
+                            <button type="submit" class="delete-btn">Delete</button>
+                        </form>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="segment overdue">
+            <h2>Overdue</h2>
+            <ul id="overdue-tasks">
+                {% for task in overdue_tasks %}
+                <li>
+                    <strong>{{ task.title }}</strong> - Overdue, planned date: {{ task.dueDate }}
+                    <p>Description: {{ task.description }}</p>
+
+                    <div class="button-group">
+                        <form action="/complete_task/{{ task.id }}" method="POST" style="display: inline;">
+                            <button type="submit" class="complete-btn">Complete</button>
+                        </form>
+                        <form action="/delete_task/{{ task.id }}" method="POST" style="display: inline;">
+                            <button type="submit" class="delete-btn">Delete</button>
+                        </form>
+                    </div>
+
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+
+    <script>
+        function filterTasks() {
+            const searchQuery = document.getElementById('search').value.toLowerCase();
+            const taskSegments = document.querySelectorAll('.segment');
+
+            taskSegments.forEach(segment => {
+                const taskList = segment.querySelector('ul');
+                const tasks = taskList.querySelectorAll('li');
+
+                tasks.forEach(task => {
+                    const taskTitle = task.querySelector('strong').textContent.toLowerCase();
+                    const taskDescription = task.querySelector('p').textContent.toLowerCase();
+
+                    if (taskTitle.includes(searchQuery) || taskDescription.includes(searchQuery)) {
+                        task.style.display = 'block';
+                    } else {
+                        task.style.display = 'none';
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+body {
+    background-color: #F7F9FC;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+.signup-container {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+    color: #00ADB5;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 8px;
+    display: block;
+}
+
+input {
+    width: 94%;
+    padding: 12px 15px;
+    margin: 10px 0 20px;
+    border: 1px solid #E1E4E8;
+    border-radius: 8px;
+    background-color: #F7F9FC;
+    font-size: 16px;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #00ADB5;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background-color: #00ADB5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #008C8B;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+@media screen and (max-width: 768px) {
+    .signup-container {
+        padding: 20px;
+        width: 90%;
+    }
+}

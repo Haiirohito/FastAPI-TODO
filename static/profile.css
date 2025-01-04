@@ -1,0 +1,157 @@
+/* Profile Page Styles */
+body {
+    background-color: #F7F9FC;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #00ADB5;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.personal-info {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #555;
+    transition: box-shadow 0.3s ease;
+}
+
+.personal-info p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.personal-info p strong {
+    font-weight: bold;
+    color: #00ADB5;
+}
+
+/* Modernize Name and Email Display */
+.info-item {
+    margin-bottom: 20px;
+}
+
+.info-item label {
+    font-weight: bold;
+    font-size: 18px;
+    color: #00ADB5;
+    margin-bottom: 5px;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.info-item p {
+    font-size: 22px;
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.info-item p:hover {
+    background-color: #E0F7FA;
+    /* Light Cyan */
+    color: #00796B;
+}
+
+/* New Task Status Section */
+.task-status {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.task-container {
+    width: 32%;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    font-size: 24px;
+    font-weight: 600;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.task-container h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #222831;
+}
+
+.task-container p {
+    font-size: 32px;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #393E46;
+}
+
+/* Color Styles for Each Task Status */
+.pending {
+    background-color: #FFF9C4;
+    /* Light Yellow */
+}
+
+.completed {
+    background-color: #C8E6C9;
+    /* Light Green */
+}
+
+.overdue {
+    background-color: #FFEBEE;
+    /* Light Red */
+}
+
+/* Hover Effects */
+.task-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 768px) {
+    .task-status {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .task-container {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+}

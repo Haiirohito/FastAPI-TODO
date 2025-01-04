@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/static/navbar.css">
+    <link rel="stylesheet" href="/static/profile.css">
+</head>
+
+<body>
+    <div class="navbar-top">
+        {% if logged_in %}
+        <span>Welcome, {{ user.username }}</span>
+        <a href="/">Home</a>
+        <a href="/logout">Logout</a>
+        {% else %}
+        <a href="/login">Login</a>
+        <a href="/sign_up">Sign Up</a>
+        {% endif %}
+        <div class="search">
+            <input type="text" id="search" placeholder="Search tasks...">
+            <button onclick="filterTasks()">Search</button>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>Profile</h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="container personal-info">
+        <div class="info-item">
+            <label>Name:</label>
+            <p>{{ user.username }}</p>
+        </div>
+        <div class="info-item">
+            <label>Email:</label>
+            <p>{{ user.email }}</p>
+        </div>
+    </div>
+
+    <!-- New Containers for Task Counts -->
+    <div class="task-status">
+        <div class="task-container pending">
+            <h3>Pending Tasks</h3>
+            <p>{{ pending_count }}</p>
+        </div>
+        <div class="task-container completed">
+            <h3>Completed Tasks</h3>
+            <p>{{ completed_count }}</p>
+        </div>
+        <div class="task-container overdue">
+            <h3>Overdue Tasks</h3>
+            <p>{{ overdue_count }}</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
